@@ -37,7 +37,7 @@ class Director:
         while self.is_playing:
             self.get_inputs()
             self.do_updates()
-            self.do_outputs()
+            self.do_outputs
 
     def get_inputs(self):
         """Ask the user if they want to roll.
