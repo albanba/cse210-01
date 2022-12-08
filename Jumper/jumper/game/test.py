@@ -1,6 +1,15 @@
-word = "caca" 
-index = word.find("q")
-print (index)
+caca = ["p", "c"]
+
+print (len(caca))
+
+# right = False 
+ 
+# if right() == False:
+#             print ("false")
+# elif right() == True:
+#             print ("true")
+
+# print(right)
 
 
 # jumper = ["  ___", ' /___\\', ' \\   /', '  \\ /', "   O", "  /|\\", "  / \\", " ", "^^^^^^^"]

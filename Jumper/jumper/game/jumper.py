@@ -16,19 +16,13 @@ class Jumper():
             self (Seeker): An instance of Seeker.
         """
        
-    def update_jumper(self, puzzle, answers):
+    def update_jumper(self):
         """Gets the current location.
         
         Returns:
             number: The current location,
         """
-        print (puzzle._old_answers)
-        print (puzzle._new_answers)
-        
-        if puzzle._old_answers == answers:
-            self._jumper_tracker.pop(0)
-        # else:
-        #     puzzle.change_old_answers(answers)
             
-        return self._jumper_tracker
-             
+        self._jumper_tracker.pop(0)
+      
+                         

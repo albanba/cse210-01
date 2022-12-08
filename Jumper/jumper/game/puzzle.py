@@ -32,11 +32,11 @@ class Puzzle:
 
         self._letter = letter
     
-    def right_wrong(self):
+    def right(self):
         if self._word.find(self._letter) > -1:
-            right = True
-        elif self.word.find(self._letter) ==-1:
-            right = False
+            right = "true"
+        elif self._word.find(self._letter) == -1:
+            right = "false"
         
         return right
 
@@ -59,12 +59,10 @@ class Puzzle:
             if index > -1:
                 self._new_answers[index] = self._letter
 
-        print (self._old_answers)        
+           
         return self._new_answers
 
         
-    # def change_old_answers(self, new_answers):
-
-    #     self._old_answers = new_answers
+   
 
         

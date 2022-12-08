@@ -26,6 +26,7 @@ class Director:
         self._jumper = Jumper()
         self._terminal_service = TerminalService()
         self._answers = []
+        self._old_answers = self._puzzle._old_answers
         
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -41,6 +42,13 @@ class Director:
             self._get_inputs()
             self._do_updates()
             self._do_outputs()
+            if list(self._puzzle._word) == self._answers:
+                self._is_playing = False
+                print ("\nCongratulations, you win!")
+            elif len(self._jumper._jumper_tracker) == 5:
+                self._is_playing = False
+                print ("\nOooops, you lost!")
+        
 
     def _get_inputs(self):
         # Ask for a letter.
@@ -58,18 +66,27 @@ class Director:
     #         self (Director): An instance of Director.
     #     """
         self._answers = self._puzzle.track_answers()
+
+        if self._puzzle.right() == "false":
+            self._jumper.update_jumper()
+        elif self._puzzle.right() == "true":
+            self._old_answers = self._answers
         
-        self._jumper.update_jumper(self._puzzle, self._answers)
-       
-        
-        
+        if list(self._puzzle._word) == self._answers:
+            self._is_playing = False
+            print ("\nCongratulations, you win!")
+        elif len(self._jumper._jumper_tracker) == 4:
+            self._is_playing = False
+            print ("\nOooops, you lost!")
+
     def _do_outputs(self):
     #     """Provides a hint for the seeker to use.
 
     #     Args:
     #         self (Director): An instance of Director.
     #     """
+        
         self._terminal_service.write_text(self._answers)
-       
+        print ()
         self._terminal_service.write_jumper(self._jumper._jumper_tracker)
 
